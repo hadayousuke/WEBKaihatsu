@@ -2,16 +2,31 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>おみくじApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script langage="javascript" type="text/javascript">
+        function repeat(arr, n) {
+            var a = [];
+            for (var i = 0; i < n; i++) {
+                a.push.apply(a, arr);
+            }
+            return a;
+        }
+    </script>
 <body>
     <dir>
-        <button id="output-p">押してね</button>
+        <button id="startbutton">おみくじ</button>
+        <p id="output-p"></p>
     </dir>
     <script langage="javascript" type="text/javascript">
-    var output_p = document.getElementById('output-p');
-    output_p.onclick = function() {
-    var output_p = document.getElementById('output-p')
-    output_p.outerHTML = '<p>Hello, world!</p>';
+    var startbutton = document.getElementById('startbutton');
+    startbutton.onclick = function() {
+        var output_p = document.getElementById('output-p');
+        var items = ['大吉'].concat(repeat(['中吉'], 2)).concat(repeat(['小吉'], 4)).concat(repeat(['凶'], 8)).concat(repeat(['大凶'], 16));
+        
+        var random = Math.floor( Math.random() * items.length );
+        
+        output_p.innerHTML = items[random]
     };
     </script>
 </body>
